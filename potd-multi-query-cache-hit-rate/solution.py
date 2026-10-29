@@ -8,6 +8,7 @@ def cache_hit_rate(keys: list[int]) -> tuple[int, int, float]:
     Return (hits, misses, rate) where rate = hits / len(keys).
     """
     # TODO: track which keys have been seen so far, in order.
+    #this is just a lookup table
     seen = set()
     hits = 0
     for key in keys :
