@@ -10,8 +10,6 @@ def cache_hit_rate(keys: list[int]) -> tuple[int, int, float]:
     # TODO: track which keys have been seen so far, in order.
     seen = set()
     hits = 0
-    if not keys:
-        return (0,0,0.0)
     for key in keys :
         if key in seen:
             hits += 1
