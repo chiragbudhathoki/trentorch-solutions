@@ -20,9 +20,13 @@ def delivery_time_regressor(
     """
     # TODO: augment with an intercept column, solve via pseudoinverse/lstsq,
     # then apply the fitted model to each query row.
+    
     x_aug = np.c_[np.ones(x.shape[0]),x]
+    #psuedoinverse X+
     x_plus = np.linalg.pinv(x_aug)
+    #weight
     w = x_plus @ y
+    #unpacking the weight
     bias = w[0]
     weight = w[1:]
     yhat = queries @ weight + bias
