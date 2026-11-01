@@ -11,6 +11,6 @@ def perplexity_dashboard(losses: list[float]) -> tuple[float, float]:
     Return (mean_loss, perplexity). Exponentiate the MEAN, never the sum.
     """
     # TODO: average first, then exponentiate once.
-    H = statistics.mean(losses)
+    H = sum(losses)/len(losses)
     PPL = math.exp(H)
     return(H,PPL)
