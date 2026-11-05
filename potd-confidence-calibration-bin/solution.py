@@ -19,13 +19,13 @@ def confidence_calibration_bin(
         bin_idx = min(k -1,int(k * p))
         buckets[bin_idx].append((p,y))
     result = []
-    for bin in buckets:
-        count = len(bin)
+    for bucket in buckets:
+        count = len(bucket)
         if count == 0:
-            mean_prob = 0
-            positive_rate = 0
+          result.append((0,0.0,0.0))
         else:
-            mean_prob =  sum(p for p,y in bin)/count
-            positive_rate = sum(y for p,y in bin)/count
-        result.append((count,mean_prob,positive_rate))
+            mean_prob =  sum(p for p,_ in bucket)/count
+            positive_rate = sum(y for _,y in bucket)/count
+            result.append((count,mean_prob,positive_rate))
+        
     return (result)
